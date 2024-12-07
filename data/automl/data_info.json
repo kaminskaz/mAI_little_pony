@@ -1,6 +1,5 @@
 {
     "columns": [
-        "rowid",
         "koi_period",
         "koi_time0bk",
         "koi_time0",
@@ -64,12 +63,9 @@
         "koi_dikco_msky"
     ],
     "rows": 5079,
-    "cols": 62,
+    "cols": 61,
     "target_is_numeric": false,
     "columns_info": {
-        "rowid": [
-            "scale"
-        ],
         "koi_period": [
             "scale"
         ],
@@ -294,7 +290,7 @@
     "target_info": [
         "convert_0_1"
     ],
-    "n_features": 62,
+    "n_features": 61,
     "is_sample_weighted": false,
     "is_fairness_applied": false,
     "n_classes": 2

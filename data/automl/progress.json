@@ -9,61 +9,61 @@
             "ensemble"
         ],
         "algorithms": [
-            "Baseline",
-            "Linear",
             "Decision Tree",
             "Random Forest",
+            "Extra Trees",
+            "LightGBM",
             "Xgboost",
-            "Neural Network"
+            "CatBoost"
         ],
         "spend": [
             {
                 "model_name": "prepare_data",
                 "model_type": "prepare_data",
                 "fit_level": "prepare_data",
-                "train_time": 0.07317900657653809
+                "train_time": 0.06888294219970703
             },
             {
-                "model_name": "1_Baseline",
-                "model_type": "Baseline",
-                "fit_level": "simple_algorithms",
-                "train_time": 0.4074692726135254
-            },
-            {
-                "model_name": "2_DecisionTree",
+                "model_name": "1_DecisionTree",
                 "model_type": "Decision Tree",
                 "fit_level": "simple_algorithms",
-                "train_time": 6.689407825469971
+                "train_time": 7.041100025177002
             },
             {
-                "model_name": "3_Linear",
-                "model_type": "Linear",
-                "fit_level": "simple_algorithms",
-                "train_time": 2.87893009185791
+                "model_name": "2_Default_LightGBM",
+                "model_type": "LightGBM",
+                "fit_level": "default_algorithms",
+                "train_time": 3.674790859222412
             },
             {
-                "model_name": "4_Default_Xgboost",
+                "model_name": "3_Default_Xgboost",
                 "model_type": "Xgboost",
                 "fit_level": "default_algorithms",
-                "train_time": 2.0452141761779785
+                "train_time": 1.789839267730713
             },
             {
-                "model_name": "5_Default_NeuralNetwork",
-                "model_type": "Neural Network",
+                "model_name": "4_Default_CatBoost",
+                "model_type": "CatBoost",
                 "fit_level": "default_algorithms",
-                "train_time": 3.097012996673584
+                "train_time": 2.3203110694885254
             },
             {
-                "model_name": "6_Default_RandomForest",
+                "model_name": "5_Default_RandomForest",
                 "model_type": "Random Forest",
                 "fit_level": "default_algorithms",
-                "train_time": 4.700953006744385
+                "train_time": 2.975905656814575
+            },
+            {
+                "model_name": "6_Default_ExtraTrees",
+                "model_type": "Extra Trees",
+                "fit_level": "default_algorithms",
+                "train_time": 2.524630069732666
             },
             {
                 "model_name": "Ensemble",
                 "model_type": "Ensemble",
                 "fit_level": "ensemble",
-                "train_time": 0.7953720092773438
+                "train_time": 0.7380120754241943
             }
         ],
         "is_hill_climbing": false,
@@ -71,74 +71,6 @@
     },
     "all_params": {
         "simple_algorithms": [
-            {
-                "additional": {
-                    "max_steps": 1,
-                    "max_rows_limit": null,
-                    "max_cols_limit": null
-                },
-                "preprocessing": {
-                    "columns_preprocessing": {
-                        "koi_eccen": [
-                            "remove_column"
-                        ],
-                        "koi_longp": [
-                            "remove_column"
-                        ],
-                        "koi_ingress": [
-                            "remove_column"
-                        ],
-                        "koi_limbdark_mod": [
-                            "remove_column"
-                        ],
-                        "koi_ldm_coeff4": [
-                            "remove_column"
-                        ],
-                        "koi_ldm_coeff3": [
-                            "remove_column"
-                        ],
-                        "koi_model_dof": [
-                            "remove_column"
-                        ],
-                        "koi_model_chisq": [
-                            "remove_column"
-                        ],
-                        "koi_sage": [
-                            "remove_column"
-                        ]
-                    },
-                    "target_preprocessing": [
-                        "na_exclude",
-                        "categorical_to_int"
-                    ],
-                    "ml_task": "binary_classification"
-                },
-                "validation_strategy": {
-                    "validation_type": "split",
-                    "train_ratio": 0.75,
-                    "shuffle": true,
-                    "stratify": true,
-                    "X_path": "../data/automl/X.data",
-                    "y_path": "../data/automl/y.data",
-                    "results_path": "../data/automl"
-                },
-                "learner": {
-                    "model_type": "Baseline",
-                    "ml_task": "binary_classification",
-                    "n_jobs": -1,
-                    "seed": 1235,
-                    "explain_level": 2
-                },
-                "automl_random_state": 1234,
-                "ml_task": "binary_classification",
-                "explain_level": 2,
-                "name": "1_Baseline",
-                "status": "trained",
-                "final_loss": 0.6524150459951091,
-                "train_time": 1.0040154457092285,
-                "data_type": "original",
-                "max_time_for_learner": 360.0
-            },
             {
                 "additional": {
                     "trees_in_step": 1,
@@ -337,33 +269,24 @@
                 "automl_random_state": 1234,
                 "ml_task": "binary_classification",
                 "explain_level": 2,
-                "name": "2_DecisionTree",
+                "name": "1_DecisionTree",
                 "status": "trained",
-                "final_loss": 0.27094283766044297,
-                "train_time": 7.567200183868408,
+                "final_loss": 0.3776788286596357,
+                "train_time": 7.802820205688477,
                 "data_type": "original",
                 "max_time_for_learner": 360.0
-            },
+            }
+        ],
+        "default_algorithms": [
             {
                 "additional": {
-                    "max_steps": 1,
+                    "max_rounds": 10000,
+                    "early_stopping_rounds": 50,
                     "max_rows_limit": null,
                     "max_cols_limit": null
                 },
                 "preprocessing": {
                     "columns_preprocessing": {
-                        "rowid": [
-                            "scale_normal"
-                        ],
-                        "koi_period": [
-                            "scale_normal"
-                        ],
-                        "koi_time0bk": [
-                            "scale_normal"
-                        ],
-                        "koi_time0": [
-                            "scale_normal"
-                        ],
                         "koi_eccen": [
                             "remove_column"
                         ],
@@ -371,49 +294,37 @@
                             "remove_column"
                         ],
                         "koi_impact": [
-                            "na_fill_median",
-                            "scale_normal"
-                        ],
-                        "koi_duration": [
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_ingress": [
                             "remove_column"
                         ],
                         "koi_depth": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_ror": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_srho": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_prad": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_sma": [
                             "na_fill_median"
                         ],
                         "koi_incl": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_teq": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_insol": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dor": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_limbdark_mod": [
                             "remove_column"
@@ -431,32 +342,23 @@
                             "na_fill_median"
                         ],
                         "koi_max_sngle_ev": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_max_mult_ev": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_model_snr": [
-                            "na_fill_median",
-                            "scale_normal"
-                        ],
-                        "koi_count": [
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_num_transits": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_tce_plnt_num": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_quarters": [
                             "na_fill_median",
-                            "categorical_to_int",
-                            "scale_normal"
+                            "categorical_to_int"
                         ],
                         "koi_bin_oedp_sig": [
                             "na_fill_median"
@@ -468,82 +370,58 @@
                             "remove_column"
                         ],
                         "koi_steff": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_slogg": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_smet": [
                             "na_fill_median"
                         ],
                         "koi_srad": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_smass": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_sage": [
                             "remove_column"
                         ],
-                        "ra": [
-                            "scale_normal"
-                        ],
-                        "dec": [
-                            "scale_normal"
-                        ],
-                        "koi_kepmag": [
-                            "scale_normal"
-                        ],
                         "koi_gmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_rmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_imag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_zmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_jmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_hmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_kmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_stat_sig": [
                             "na_fill_median"
                         ],
                         "koi_fwm_sra": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_sdec": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_srao": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_sdeco": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_prao": [
                             "na_fill_median"
@@ -552,28 +430,22 @@
                             "na_fill_median"
                         ],
                         "koi_dicco_mra": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dicco_mdec": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dicco_msky": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dikco_mra": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dikco_mdec": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dikco_msky": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ]
                     },
                     "target_preprocessing": [
@@ -592,24 +464,30 @@
                     "results_path": "../data/automl"
                 },
                 "learner": {
-                    "model_type": "Linear",
+                    "model_type": "LightGBM",
                     "ml_task": "binary_classification",
                     "n_jobs": -1,
-                    "seed": 1235,
+                    "objective": "binary",
+                    "num_leaves": 63,
+                    "learning_rate": 0.05,
+                    "feature_fraction": 0.9,
+                    "bagging_fraction": 0.9,
+                    "min_data_in_leaf": 10,
+                    "seed": 2,
+                    "metric": "binary_logloss",
+                    "custom_eval_metric_name": null,
                     "explain_level": 2
                 },
                 "automl_random_state": 1234,
                 "ml_task": "binary_classification",
                 "explain_level": 2,
-                "name": "3_Linear",
+                "name": "2_Default_LightGBM",
                 "status": "trained",
-                "final_loss": 0.14910324161054855,
-                "train_time": 3.6938719749450684,
+                "final_loss": 0.10278452201103071,
+                "train_time": 4.357127904891968,
                 "data_type": "original",
                 "max_time_for_learner": 360.0
-            }
-        ],
-        "default_algorithms": [
+            },
             {
                 "additional": {
                     "max_rounds": 10000,
@@ -805,39 +683,29 @@
                     "min_child_weight": 1,
                     "subsample": 1.0,
                     "colsample_bytree": 1.0,
-                    "seed": 4,
+                    "seed": 3,
                     "eval_metric": "logloss",
                     "explain_level": 2
                 },
                 "automl_random_state": 1234,
                 "ml_task": "binary_classification",
                 "explain_level": 2,
-                "name": "4_Default_Xgboost",
+                "name": "3_Default_Xgboost",
                 "status": "trained",
-                "final_loss": 0.0853951121321683,
-                "train_time": 2.742884397506714,
+                "final_loss": 0.08831726547889908,
+                "train_time": 2.47084641456604,
                 "data_type": "original",
                 "max_time_for_learner": 360.0
             },
             {
                 "additional": {
+                    "max_rounds": 10000,
+                    "early_stopping_rounds": 50,
                     "max_rows_limit": null,
                     "max_cols_limit": null
                 },
                 "preprocessing": {
                     "columns_preprocessing": {
-                        "rowid": [
-                            "scale_normal"
-                        ],
-                        "koi_period": [
-                            "scale_normal"
-                        ],
-                        "koi_time0bk": [
-                            "scale_normal"
-                        ],
-                        "koi_time0": [
-                            "scale_normal"
-                        ],
                         "koi_eccen": [
                             "remove_column"
                         ],
@@ -845,49 +713,37 @@
                             "remove_column"
                         ],
                         "koi_impact": [
-                            "na_fill_median",
-                            "scale_normal"
-                        ],
-                        "koi_duration": [
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_ingress": [
                             "remove_column"
                         ],
                         "koi_depth": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_ror": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_srho": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_prad": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_sma": [
                             "na_fill_median"
                         ],
                         "koi_incl": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_teq": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_insol": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dor": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_limbdark_mod": [
                             "remove_column"
@@ -905,32 +761,22 @@
                             "na_fill_median"
                         ],
                         "koi_max_sngle_ev": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_max_mult_ev": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_model_snr": [
-                            "na_fill_median",
-                            "scale_normal"
-                        ],
-                        "koi_count": [
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_num_transits": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_tce_plnt_num": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_quarters": [
-                            "na_fill_median",
-                            "categorical_to_int",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_bin_oedp_sig": [
                             "na_fill_median"
@@ -942,82 +788,58 @@
                             "remove_column"
                         ],
                         "koi_steff": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_slogg": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_smet": [
                             "na_fill_median"
                         ],
                         "koi_srad": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_smass": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_sage": [
                             "remove_column"
                         ],
-                        "ra": [
-                            "scale_normal"
-                        ],
-                        "dec": [
-                            "scale_normal"
-                        ],
-                        "koi_kepmag": [
-                            "scale_normal"
-                        ],
                         "koi_gmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_rmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_imag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_zmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_jmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_hmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_kmag": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_stat_sig": [
                             "na_fill_median"
                         ],
                         "koi_fwm_sra": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_sdec": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_srao": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_sdeco": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_fwm_prao": [
                             "na_fill_median"
@@ -1026,28 +848,22 @@
                             "na_fill_median"
                         ],
                         "koi_dicco_mra": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dicco_mdec": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dicco_msky": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dikco_mra": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dikco_mdec": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ],
                         "koi_dikco_msky": [
-                            "na_fill_median",
-                            "scale_normal"
+                            "na_fill_median"
                         ]
                     },
                     "target_preprocessing": [
@@ -1066,22 +882,24 @@
                     "results_path": "../data/automl"
                 },
                 "learner": {
-                    "model_type": "Neural Network",
+                    "model_type": "CatBoost",
                     "ml_task": "binary_classification",
                     "n_jobs": -1,
-                    "dense_1_size": 32,
-                    "dense_2_size": 16,
-                    "learning_rate": 0.05,
-                    "seed": 5,
+                    "learning_rate": 0.1,
+                    "depth": 6,
+                    "rsm": 1,
+                    "loss_function": "Logloss",
+                    "seed": 4,
+                    "eval_metric": "Logloss",
                     "explain_level": 2
                 },
                 "automl_random_state": 1234,
                 "ml_task": "binary_classification",
                 "explain_level": 2,
-                "name": "5_Default_NeuralNetwork",
+                "name": "4_Default_CatBoost",
                 "status": "trained",
-                "final_loss": 0.20350722564384002,
-                "train_time": 3.8146109580993652,
+                "final_loss": 0.0759056545684613,
+                "train_time": 2.9874320030212402,
                 "data_type": "original",
                 "max_time_for_learner": 360.0
             },
@@ -1281,6 +1099,214 @@
                     "max_features": 0.9,
                     "min_samples_split": 30,
                     "max_depth": 4,
+                    "seed": 5,
+                    "eval_metric_name": "logloss",
+                    "explain_level": 2
+                },
+                "automl_random_state": 1234,
+                "ml_task": "binary_classification",
+                "explain_level": 2,
+                "name": "5_Default_RandomForest",
+                "status": "trained",
+                "final_loss": 0.2343084477449423,
+                "train_time": 3.6480939388275146,
+                "data_type": "original",
+                "max_time_for_learner": 360.0
+            },
+            {
+                "additional": {
+                    "trees_in_step": 100,
+                    "max_steps": 50,
+                    "early_stopping_rounds": 50,
+                    "max_rows_limit": null,
+                    "max_cols_limit": null
+                },
+                "preprocessing": {
+                    "columns_preprocessing": {
+                        "koi_eccen": [
+                            "remove_column"
+                        ],
+                        "koi_longp": [
+                            "remove_column"
+                        ],
+                        "koi_impact": [
+                            "na_fill_median"
+                        ],
+                        "koi_ingress": [
+                            "remove_column"
+                        ],
+                        "koi_depth": [
+                            "na_fill_median"
+                        ],
+                        "koi_ror": [
+                            "na_fill_median"
+                        ],
+                        "koi_srho": [
+                            "na_fill_median"
+                        ],
+                        "koi_prad": [
+                            "na_fill_median"
+                        ],
+                        "koi_sma": [
+                            "na_fill_median"
+                        ],
+                        "koi_incl": [
+                            "na_fill_median"
+                        ],
+                        "koi_teq": [
+                            "na_fill_median"
+                        ],
+                        "koi_insol": [
+                            "na_fill_median"
+                        ],
+                        "koi_dor": [
+                            "na_fill_median"
+                        ],
+                        "koi_limbdark_mod": [
+                            "remove_column"
+                        ],
+                        "koi_ldm_coeff4": [
+                            "remove_column"
+                        ],
+                        "koi_ldm_coeff3": [
+                            "remove_column"
+                        ],
+                        "koi_ldm_coeff2": [
+                            "na_fill_median"
+                        ],
+                        "koi_ldm_coeff1": [
+                            "na_fill_median"
+                        ],
+                        "koi_max_sngle_ev": [
+                            "na_fill_median"
+                        ],
+                        "koi_max_mult_ev": [
+                            "na_fill_median"
+                        ],
+                        "koi_model_snr": [
+                            "na_fill_median"
+                        ],
+                        "koi_num_transits": [
+                            "na_fill_median"
+                        ],
+                        "koi_tce_plnt_num": [
+                            "na_fill_median"
+                        ],
+                        "koi_quarters": [
+                            "na_fill_median",
+                            "categorical_to_int"
+                        ],
+                        "koi_bin_oedp_sig": [
+                            "na_fill_median"
+                        ],
+                        "koi_model_dof": [
+                            "remove_column"
+                        ],
+                        "koi_model_chisq": [
+                            "remove_column"
+                        ],
+                        "koi_steff": [
+                            "na_fill_median"
+                        ],
+                        "koi_slogg": [
+                            "na_fill_median"
+                        ],
+                        "koi_smet": [
+                            "na_fill_median"
+                        ],
+                        "koi_srad": [
+                            "na_fill_median"
+                        ],
+                        "koi_smass": [
+                            "na_fill_median"
+                        ],
+                        "koi_sage": [
+                            "remove_column"
+                        ],
+                        "koi_gmag": [
+                            "na_fill_median"
+                        ],
+                        "koi_rmag": [
+                            "na_fill_median"
+                        ],
+                        "koi_imag": [
+                            "na_fill_median"
+                        ],
+                        "koi_zmag": [
+                            "na_fill_median"
+                        ],
+                        "koi_jmag": [
+                            "na_fill_median"
+                        ],
+                        "koi_hmag": [
+                            "na_fill_median"
+                        ],
+                        "koi_kmag": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_stat_sig": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_sra": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_sdec": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_srao": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_sdeco": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_prao": [
+                            "na_fill_median"
+                        ],
+                        "koi_fwm_pdeco": [
+                            "na_fill_median"
+                        ],
+                        "koi_dicco_mra": [
+                            "na_fill_median"
+                        ],
+                        "koi_dicco_mdec": [
+                            "na_fill_median"
+                        ],
+                        "koi_dicco_msky": [
+                            "na_fill_median"
+                        ],
+                        "koi_dikco_mra": [
+                            "na_fill_median"
+                        ],
+                        "koi_dikco_mdec": [
+                            "na_fill_median"
+                        ],
+                        "koi_dikco_msky": [
+                            "na_fill_median"
+                        ]
+                    },
+                    "target_preprocessing": [
+                        "na_exclude",
+                        "categorical_to_int"
+                    ],
+                    "ml_task": "binary_classification"
+                },
+                "validation_strategy": {
+                    "validation_type": "split",
+                    "train_ratio": 0.75,
+                    "shuffle": true,
+                    "stratify": true,
+                    "X_path": "../data/automl/X.data",
+                    "y_path": "../data/automl/y.data",
+                    "results_path": "../data/automl"
+                },
+                "learner": {
+                    "model_type": "Extra Trees",
+                    "ml_task": "binary_classification",
+                    "n_jobs": -1,
+                    "criterion": "gini",
+                    "max_features": 0.9,
+                    "min_samples_split": 30,
+                    "max_depth": 4,
                     "seed": 6,
                     "eval_metric_name": "logloss",
                     "explain_level": 2
@@ -1288,10 +1314,10 @@
                 "automl_random_state": 1234,
                 "ml_task": "binary_classification",
                 "explain_level": 2,
-                "name": "6_Default_RandomForest",
+                "name": "6_Default_ExtraTrees",
                 "status": "trained",
-                "final_loss": 0.17325695862453083,
-                "train_time": 5.4320068359375,
+                "final_loss": 0.3631808533156923,
+                "train_time": 3.2322959899902344,
                 "data_type": "original",
                 "max_time_for_learner": 360.0
             }
@@ -1302,8 +1328,8 @@
                 "is_stacked": false,
                 "name": "Ensemble",
                 "status": "trained",
-                "final_loss": 0.07425882894538371,
-                "train_time": 0.7953720092773438
+                "final_loss": 0.07468396187245799,
+                "train_time": 0.7380120754241943
             }
         ]
     },

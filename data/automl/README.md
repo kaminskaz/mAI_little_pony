@@ -1,14 +1,14 @@
 # AutoML Leaderboard
 
-| Best model   | name                                                         | model_type     | metric_type   |   metric_value |   train_time |
-|:-------------|:-------------------------------------------------------------|:---------------|:--------------|---------------:|-------------:|
-|              | [1_Baseline](1_Baseline/README.md)                           | Baseline       | logloss       |      0.652415  |         1    |
-|              | [2_DecisionTree](2_DecisionTree/README.md)                   | Decision Tree  | logloss       |      0.270943  |         7.57 |
-|              | [3_Linear](3_Linear/README.md)                               | Linear         | logloss       |      0.149103  |         3.69 |
-|              | [4_Default_Xgboost](4_Default_Xgboost/README.md)             | Xgboost        | logloss       |      0.0853951 |         2.74 |
-|              | [5_Default_NeuralNetwork](5_Default_NeuralNetwork/README.md) | Neural Network | logloss       |      0.203507  |         3.81 |
-|              | [6_Default_RandomForest](6_Default_RandomForest/README.md)   | Random Forest  | logloss       |      0.173257  |         5.43 |
-| **the best** | [Ensemble](Ensemble/README.md)                               | Ensemble       | logloss       |      0.0742588 |         0.8  |
+| Best model   | name                                                       | model_type    | metric_type   |   metric_value |   train_time |
+|:-------------|:-----------------------------------------------------------|:--------------|:--------------|---------------:|-------------:|
+|              | [1_DecisionTree](1_DecisionTree/README.md)                 | Decision Tree | logloss       |      0.377679  |         7.8  |
+|              | [2_Default_LightGBM](2_Default_LightGBM/README.md)         | LightGBM      | logloss       |      0.102785  |         4.36 |
+|              | [3_Default_Xgboost](3_Default_Xgboost/README.md)           | Xgboost       | logloss       |      0.0883173 |         2.47 |
+|              | [4_Default_CatBoost](4_Default_CatBoost/README.md)         | CatBoost      | logloss       |      0.0759057 |         2.99 |
+|              | [5_Default_RandomForest](5_Default_RandomForest/README.md) | Random Forest | logloss       |      0.234308  |         3.65 |
+|              | [6_Default_ExtraTrees](6_Default_ExtraTrees/README.md)     | Extra Trees   | logloss       |      0.363181  |         3.23 |
+| **the best** | [Ensemble](Ensemble/README.md)                             | Ensemble      | logloss       |      0.074684  |         0.74 |
 
 ### AutoML Performance
 ![AutoML Performance](ldb_performance.png)

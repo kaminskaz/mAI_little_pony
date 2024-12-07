@@ -4,40 +4,40 @@
 
 
 ## Ensemble structure
-| Model             |   Weight |
-|:------------------|---------:|
-| 3_Linear          |        1 |
-| 4_Default_Xgboost |        5 |
+| Model              |   Weight |
+|:-------------------|---------:|
+| 3_Default_Xgboost  |        1 |
+| 4_Default_CatBoost |        4 |
 
 ## Metric details
-|           |     score |     threshold |
-|:----------|----------:|--------------:|
-| logloss   | 0.0742588 | nan           |
-| auc       | 0.996443  | nan           |
-| f1        | 0.980488  |   0.482125    |
-| accuracy  | 0.974803  |   0.482125    |
-| precision | 1         |   0.989456    |
-| recall    | 1         |   0.000187441 |
-| mcc       | 0.945076  |   0.482125    |
+|           |    score |     threshold |
+|:----------|---------:|--------------:|
+| logloss   | 0.074684 | nan           |
+| auc       | 0.996244 | nan           |
+| f1        | 0.980344 |   0.622596    |
+| accuracy  | 0.974803 |   0.622596    |
+| precision | 1        |   0.99416     |
+| recall    | 1        |   0.000136718 |
+| mcc       | 0.945262 |   0.622596    |
 
 
 ## Metric details with threshold from accuracy metric
-|           |     score |   threshold |
-|:----------|----------:|------------:|
-| logloss   | 0.0742588 |  nan        |
-| auc       | 0.996443  |  nan        |
-| f1        | 0.980488  |    0.482125 |
-| accuracy  | 0.974803  |    0.482125 |
-| precision | 0.974545  |    0.482125 |
-| recall    | 0.986503  |    0.482125 |
-| mcc       | 0.945076  |    0.482125 |
+|           |    score |   threshold |
+|:----------|---------:|------------:|
+| logloss   | 0.074684 |  nan        |
+| auc       | 0.996244 |  nan        |
+| f1        | 0.980344 |    0.622596 |
+| accuracy  | 0.974803 |    0.622596 |
+| precision | 0.98155  |    0.622596 |
+| recall    | 0.979141 |    0.622596 |
+| mcc       | 0.945262 |    0.622596 |
 
 
-## Confusion matrix (at threshold=0.482125)
+## Confusion matrix (at threshold=0.622596)
 |                           |   Predicted as CONFIRMED |   Predicted as FALSE POSITIVE |
 |:--------------------------|-------------------------:|------------------------------:|
-| Labeled as CONFIRMED      |                      434 |                            21 |
-| Labeled as FALSE POSITIVE |                       11 |                           804 |
+| Labeled as CONFIRMED      |                      440 |                            15 |
+| Labeled as FALSE POSITIVE |                       17 |                           798 |
 
 ## Learning curves
 ![Learning curves](learning_curves.png)

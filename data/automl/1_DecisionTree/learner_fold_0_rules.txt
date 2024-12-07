@@ -1,0 +1,16 @@
+if (koi_count <= 1.5) and (koi_fwm_stat_sig <= 0.002) and (koi_smet <= 0.09) then class: FALSE POSITIVE (proba: 94.64%) | based on 1,679 samples
+
+if (koi_count > 1.5) and (koi_dikco_msky <= 1.73) and (koi_prad <= 15.2) then class: CONFIRMED (proba: 92.05%) | based on 780 samples
+
+if (koi_count <= 1.5) and (koi_fwm_stat_sig > 0.002) and (koi_dikco_msky <= 1.055) then class: CONFIRMED (proba: 64.26%) | based on 719 samples
+
+if (koi_count <= 1.5) and (koi_fwm_stat_sig > 0.002) and (koi_dikco_msky > 1.055) then class: FALSE POSITIVE (proba: 93.98%) | based on 299 samples
+
+if (koi_count <= 1.5) and (koi_fwm_stat_sig <= 0.002) and (koi_smet > 0.09) then class: FALSE POSITIVE (proba: 70.33%) | based on 209 samples
+
+if (koi_count > 1.5) and (koi_dikco_msky > 1.73) and (koi_count <= 2.5) then class: FALSE POSITIVE (proba: 97.26%) | based on 73 samples
+
+if (koi_count > 1.5) and (koi_dikco_msky <= 1.73) and (koi_prad > 15.2) then class: FALSE POSITIVE (proba: 94.12%) | based on 34 samples
+
+if (koi_count > 1.5) and (koi_dikco_msky > 1.73) and (koi_count > 2.5) then class: CONFIRMED (proba: 62.5%) | based on 16 samples
+
